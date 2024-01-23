@@ -1,0 +1,64 @@
+html
+  head
+    title Formulario de Datos Personales
+
+  body
+    h1 Formulario de Datos Personales
+
+    form(action="/procesar", method="post")
+      label(for="nombre") Nombre:
+      input(type="text", name="nombre", required)
+
+      label(for="dni") DNI:
+      input(type="text", name="dni", required)
+
+      label(for="sexo") Sexo:
+      select(name="sexo", required)
+        option(value="masculino") Masculino
+        option(value="femenino") Femenino
+        option(value="otro") Otro
+
+      if profesiones.length > 0
+        label Profesión:
+        each profesion in profesiones
+          div
+            input(type="checkbox", name="profesion", value=profesion)
+            label=profesion
+
+      //if provincias.length > 0
+        label Provincia de Nacimiento:
+        select(name="provincia", required)
+          each provincia in provincias
+            option(value=provincia)=provincia
+        else
+          select(disabled, required)
+            option(value="") No existen datos
+        // ...
+
+      if provincias.length > 0
+       label Provincia de Nacimiento:
+       select(name="provincia", required)
+         each provincia in provincias
+           option(value=provincia)=provincia
+      else
+          label Provincia de Nacimiento:
+          select(disabled, required)
+            option(value="") No existen datos
+
+
+
+
+      if localidades.length > 0
+        label Localidad de Nacimiento:
+        select(name="localidad", required)
+          each localidad in localidades
+            option(value=localidad)=localidad
+      else
+        label Localidad de Nacimiento:
+        select(disabled, required)
+            option(value="") No existen datos
+
+      label(for="fechaNacimiento") Fecha de Nacimiento:
+      input(type="date", name="fechaNacimiento", required)
+
+      input(type="submit", value="Enviar")
