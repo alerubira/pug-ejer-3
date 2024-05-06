@@ -17,9 +17,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Ruta para mostrar el formulario
-app.get('/', (req, res) => {
+/*pp.get('/', (req, res) => {
   res.render('formulario', { profesiones, provincias, localidades });
-});
+});*/
+app.get('/',(req,res)=>{
+res.render('prueba');
+})
 
 // Ruta para procesar el formulario (puedes ajustar esta parte según tus necesidades)
 app.post('/procesar', (req, res) => {
